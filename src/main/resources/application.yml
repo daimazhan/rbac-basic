@@ -1,0 +1,41 @@
+server:
+  port: 2025
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.25:3306/rbac?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: mysql.123M
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.rbac.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    use-generated-keys: true
+    default-executor-type: simple
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# PageHelper分页插件
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
+  params: count=countSql
+
+sa-token:
+  token-name: Authorization # token 名称
+  timeout: 86400            # token 有效期为1天
+  activity-timeout: -1      # 永不过期
+  is-concurrent: false      # 允许同一账号并发登录
+  is-share: false           # 在多人登录同一账号时共用 token
+  token-style: simple-uuid  # token 风格
+  is-log: false
+
+
+logging:
+  level:
+    org.apache.ibatis: DEBUG
+    java.sql: DEBUG
+    com.alibaba.druid: DEBUG

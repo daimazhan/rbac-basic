@@ -1,0 +1,33 @@
+// size h -> height, w -> width
+:root {
+  --h-header: 56px;
+  --h-logo: var(--h-header);
+  --h-footer: 30px;
+
+  --w-aside: 220px;
+  --w-aside-collapsed: 64px;
+
+  --radius: 4px;
+  --radius-2: 8px;
+}
+
+// border
+:root {
+  --style-border: 1px solid var(--el-border-color);
+}
+
+@for $i from 0 through 30 {
+  .p#{$i} { padding: 1px * $i; }
+  .pt#{$i} { padding-top: 1px * $i; }
+  .pr#{$i} { padding-right: 1px * $i; }
+  .pb#{$i} { padding-bottom: 1px * $i; }
+  .pl#{$i} { padding-left: 1px * $i; }
+
+  .m#{$i} { margin: 1px * $i; }
+  .mt#{$i} { margin-top: 1px * $i; }
+  .mr#{$i} { margin-right: 1px * $i; }
+  .mb#{$i} { margin-bottom: 1px * $i; }
+  .ml#{$i} { margin-left: 1px * $i; }
+
+  .lh#{$i} { line-height: 1px * $i; }
+}

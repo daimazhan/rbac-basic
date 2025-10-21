@@ -1,0 +1,15 @@
+// 用于重置element-plus组件库的原生样式
+
+// 清除el-drawer header的margin-bottom
+.el-drawer {
+  .el-drawer__header {
+    margin-bottom: 0;
+  }
+}
+
+// 清除水平表单的margin-bottom
+.el-form.clear-mb {
+  .el-form-item {
+    margin-bottom: 0;
+  }
+}

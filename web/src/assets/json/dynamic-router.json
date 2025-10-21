@@ -1,0 +1,18 @@
+{
+  "code": 200,
+  "message": "操作成功",
+  "data": [
+    {
+      "path": "/home",
+      "name": "PageHome",
+      "component": "/home/index.vue",
+      "meta": {
+        "icon": "HomeFilled",
+        "title": "主页",
+        "isFull": false,
+        "isAffix": true,
+        "isKeepAlive": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.rbac.mapper.RoleMapper">
+    <insert id="insert" parameterType="com.example.rbac.dto.RoleDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleCode != null">role_code,</if>
+            <if test="roleName != null">role_name,</if>
+            <if test="description != null">description,</if>
+            <if test="status != null">status,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roleCode != null">#{roleCode},</if>
+            <if test="roleName != null">#{roleName},</if>
+            <if test="description != null">#{description},</if>
+            <if test="status != null">#{status},</if>
+        </trim>
+    </insert>
+
+    <insert id="insertUserRole" parameterType="com.example.rbac.entity.UserRole">
+        insert into sys_user_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
+            <if test="roleId != null">role_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="roleId != null">#{roleId},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.example.rbac.dto.RoleQueryDTO">
+        update sys_role
+        <set>
+            <if test="roleName != null">role_name = #{roleName},</if>
+            <if test="roleCode != null">role_code = #{roleCode},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from sys_role where id = #{id}
+    </delete>
+
+    <select id="selectAll" parameterType="com.example.rbac.dto.RoleQueryDTO" resultType="com.example.rbac.entity.Role">
+        SELECT * FROM sys_role
+        <where>
+            <if test="roleName != null and roleName != ''">
+                AND role_name like concat('%',#{roleName},'%')
+            </if>
+            <if test="roleCode != null and roleCode != ''">
+                AND role_code = #{roleCode}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectById" parameterType="Long" resultType="com.example.rbac.entity.Role">
+        select * from sys_role where id = #{id}
+    </select>
+
+    <select id="selectRolesByUserId" parameterType="Long" resultType="com.example.rbac.entity.Role">
+        SELECT r.* FROM sys_role r
+        LEFT JOIN sys_user_role ur ON r.id = ur.role_id
+        WHERE ur.user_id = #{userId}
+    </select>
+
+    <select id="selectRoleIdsByUserId" parameterType="Long" resultType="Long">
+        SELECT role_id FROM sys_user_role WHERE user_id = #{userId}
+    </select>
+
+    <delete id="deleteRoleIdsByUserId" parameterType="Long">
+        DELETE FROM sys_user_role WHERE user_id = #{userId}
+    </delete>
+</mapper>
