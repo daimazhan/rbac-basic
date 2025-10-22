@@ -10,7 +10,7 @@
 用户：admin 密码：123123
 
 ## 技术栈
-JDK 17 
+JDK 17 , node 18
 1. springboot 2.5.15
 2. mybatis-plus 3.5.3
 3. sa-token v1.34.0
