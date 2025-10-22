@@ -9,7 +9,6 @@ import com.example.rbac.entity.User;
 import com.example.rbac.service.PermissionService;
 import com.example.rbac.service.UserService;
 import com.example.rbac.vo.LoginDTO;
-import com.example.rbac.vo.PermissionVO;
 import com.example.rbac.vo.UserVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

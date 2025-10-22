@@ -5,7 +5,6 @@ import com.example.rbac.entity.Permission;
 import com.example.rbac.entity.Role;
 import com.example.rbac.mapper.PermissionMapper;
 import com.example.rbac.mapper.RoleMapper;
-import com.example.rbac.mapper.UserMapper;
 import com.example.rbac.service.RolePermissionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

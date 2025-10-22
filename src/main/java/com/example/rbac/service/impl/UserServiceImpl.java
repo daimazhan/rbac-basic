@@ -25,8 +25,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.management.RuntimeErrorException;
-
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
