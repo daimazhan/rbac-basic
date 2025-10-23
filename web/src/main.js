@@ -7,10 +7,8 @@ import App from './App.vue'
 import store from './stores'
 import router from './router'
 import useIcons from './plugins/use-icons'
-import config from "../public/config"
-console.log("config",config);
 import 'element-plus/dist/index.css'
-document.title = config.siteTitle
+document.title = '权限管理'
 const app = createApp(App)
 
 app.use(store)

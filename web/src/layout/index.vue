@@ -19,14 +19,13 @@
             </transition>
           </router-view>
         </el-main>
-        <el-footer v-if="showFooter">{{ config.FooterStr }}</el-footer>
+        <el-footer v-if="showFooter">基于RBAC的权限系统</el-footer>
       </el-container>
     </el-container>
   </div>
 </template>
 
 <script setup>
-import config from "../../public/config"
 import useLayoutStore from '@/stores/modules/layout'
 import useAppStore from '@/stores/modules/app'
 import Header from './components/Header/index.vue'
