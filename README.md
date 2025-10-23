@@ -2,10 +2,7 @@
 
 一个基于RBAC的权限管理系统基础框架，适用于毕业设计，Java初学者。
 
-## 广告
-需要定制开发各种系统、毕业设计的朋友看过来：![dmz](./doc/dmz.jpg)  
-
-[代码站](https://daimazhan.com)
+[代码站](https://daimazhan.com) 微信：daimazhan
 
 用户：admin 密码：123123
 
@@ -19,7 +16,7 @@ JDK 17 , node 18
 6. vite
 
 ## 主要功能
-1. 登录
+1. 注册登录
 2. 用户管理
 3. 权限管理
 4. 角色管理
@@ -43,57 +40,3 @@ web：前端目录
 '404': '访问资源不存在',
 'default': '系统未知错误，请反馈给管理员'
 
-
-### 动态菜单
-```json
-
-      {
-        path: '/system',
-        name: 'system',
-        meta: {
-          icon: 'Setting',
-          title: '系统管理',
-          isFull: false,
-          isAffix: true,
-          isKeepAlive: true
-        },
-        children: [
-          {
-            path: '/user',
-            name: 'userManage',
-            component: '/system/user/index.vue',
-            meta: {
-              icon: 'User',
-              title: '用户管理',
-              isFull: false,
-              isAffix: true,
-              isKeepAlive: true
-            }
-          },
-          {
-            path: '/role',
-            name: 'roleManage',
-            component: '/system/role/index.vue',
-            meta: {
-              icon: 'Connection',
-              title: '角色管理',
-              isFull: false,
-              isAffix: true,
-              isKeepAlive: true
-            }
-          },
-          {
-            path: '/permission',
-            name: 'permissionManage',
-            component: '/system/permission/index.vue',
-            meta: {
-              icon: 'Unlock',
-              title: '权限管理',
-              isFull: false,
-              isAffix: true,
-              isKeepAlive: true
-            }
-          }
-        ]
-      }
-      ```
