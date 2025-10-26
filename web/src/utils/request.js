@@ -73,7 +73,8 @@ const api = {
           }
           if (code === 500) {
               ElMessage.error(message)
-             // removeToken()
+              removeToken()
+              useRouter().push('/login')
           }
       }) // 返回数据
       .catch(err => {
@@ -101,7 +102,8 @@ const api = {
           }
           if (code === 500) {
               ElMessage.error(message)
-              //removeToken()
+              removeToken()
+              useRouter().push('/login')
           }
       }) // 返回数据
       .catch(err => {
@@ -129,7 +131,8 @@ const api = {
           }
           if (code === 500) {
               ElMessage.error(message)
-             // removeToken()
+              removeToken()
+              useRouter().push('/login')
           }
       }) // 直接返回响应数据
       .catch(err => {
@@ -157,7 +160,8 @@ const api = {
           }
           if (code === 500) {
               ElMessage.error(message)
-            //  removeToken()
+              removeToken()
+              useRouter().push('/login')
           }
       }) // 直接返回响应数据
       .catch(err => {

@@ -12,6 +12,7 @@ public class MenuDTO {
     private Long parentId;
 
     private String path;
+    private String component;
     private String name;
     private Meta meta;
     private List<MenuDTO> children;

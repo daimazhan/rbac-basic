@@ -1,4 +1,3 @@
-import DynamicRouter from '@/assets/json/dynamic-router.json'
 import { getFlatArr, getShowMenuList, getAllBreadcrumbList } from '@/utils/util'
 import { getMenuTree } from "@/api/auth";
 
