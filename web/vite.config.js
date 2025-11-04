@@ -22,6 +22,8 @@ export default defineConfig({
   // 开发环境代理配置，请更换target为后端服务器地址
   server: {
     host: true,
+    port: 80,
+    open: true,
     proxy: {
       // https://cn.vitejs.dev/config/#server-proxy
       '/dev-api': {

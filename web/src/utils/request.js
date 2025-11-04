@@ -35,11 +35,31 @@ request.interceptors.request.use(
   }
 )
 
+// 处理登录过期逻辑的辅助函数
+const handleLoginExpired = (message) => {
+  if (message && message.includes('未登录或token已过期')) {
+    removeToken()
+    // 清除本地存储
+    localStorage.removeItem('keep-alive')
+    localStorage.removeItem('tags-view')
+    localStorage.removeItem('user')
+    localStorage.removeItem('layout')
+    localStorage.removeItem('app')
+    ElMessage.error(message || '未登录或token已过期')
+    // 使用 window.location 跳转，确保完全重新加载
+    window.location.href = '/login'
+  }
+}
+
 // 响应拦截器
 request.interceptors.response.use(
   res => {
       // console.log(res)
       if (res.status === 200) {
+          // 检查响应数据中的 message
+          if (res.data && res.data.message) {
+              handleLoginExpired(res.data.message)
+          }
           return res
       }else {
           console.error(res)
@@ -49,6 +69,10 @@ request.interceptors.response.use(
   error => {
     // 处理响应错误
     console.error('请求失败：', error)
+    // 检查错误响应中的 message
+    if (error.response && error.response.data && error.response.data.message) {
+        handleLoginExpired(error.response.data.message)
+    }
     return Promise.reject(error)
   }
 )
@@ -66,6 +90,7 @@ const api = {
           }
           if (code === 401) {
               ElMessage.error(message)
+              handleLoginExpired(message)
           }
           if (code === 404) {
               // todo 转到404页面
@@ -73,8 +98,7 @@ const api = {
           }
           if (code === 500) {
               ElMessage.error(message)
-              removeToken()
-              useRouter().push('/login')
+              handleLoginExpired(message)
           }
       }) // 返回数据
       .catch(err => {
@@ -95,6 +119,7 @@ const api = {
           }
           if (code === 401) {
               ElMessage.error(message)
+              handleLoginExpired(message)
           }
           if (code === 404) {
               // todo 转到404页面
@@ -102,8 +127,7 @@ const api = {
           }
           if (code === 500) {
               ElMessage.error(message)
-              removeToken()
-              useRouter().push('/login')
+              handleLoginExpired(message)
           }
       }) // 返回数据
       .catch(err => {
@@ -124,6 +148,7 @@ const api = {
           }
           if (code === 401) {
               ElMessage.error(message)
+              handleLoginExpired(message)
           }
           if (code === 404) {
               // todo 转到404页面
@@ -131,8 +156,7 @@ const api = {
           }
           if (code === 500) {
               ElMessage.error(message)
-              removeToken()
-              useRouter().push('/login')
+              handleLoginExpired(message)
           }
       }) // 直接返回响应数据
       .catch(err => {
@@ -153,6 +177,7 @@ const api = {
           }
           if (code === 401) {
               ElMessage.error(message)
+              handleLoginExpired(message)
           }
           if (code === 404) {
               // todo 转到404页面
@@ -160,8 +185,7 @@ const api = {
           }
           if (code === 500) {
               ElMessage.error(message)
-              removeToken()
-              useRouter().push('/login')
+              handleLoginExpired(message)
           }
       }) // 直接返回响应数据
       .catch(err => {
